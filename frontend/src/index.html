@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca Acadêmica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <span>📚</span>
+  <h1>Biblioteca Acadêmica</h1>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Cadastrar Novo Livro</h2>
+    <div class="form-row">
+      <input type="text" id="inp-titulo" placeholder="Título *" />
+      <input type="text" id="inp-autor"  placeholder="Autor *" />
+      <input type="text" id="inp-isbn"   placeholder="ISBN (opcional)" />
+      <button class="btn-primary" onclick="cadastrar()">+ Cadastrar</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+
+  <div class="card">
+    <h2>Buscar Livros</h2>
+    <div class="form-row">
+      <input type="text" id="inp-busca" placeholder="Buscar por título…"
+             onkeyup="if(event.key==='Enter') buscar()" />
+      <button class="btn-search" onclick="buscar()">🔍 Buscar</button>
+      <button class="btn-secondary" onclick="buscar('')">Listar Todos</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Acervo</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>ISBN</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-corpo">
+        <tr><td colspan="6" class="empty">Carregando…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
