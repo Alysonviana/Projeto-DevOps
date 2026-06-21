@@ -72,5 +72,19 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ erro: "Erro ao remover livro" });
   }
 });
+router.get('/', (req, res) => {
+  const { titulo } = req.query;
+  if (titulo) {
+    db.all('SELECT * FROM livros WHERE titulo LIKE ?', [`%${titulo}%`], (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    });
+  } else {
+    db.all('SELECT * FROM livros', [], (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    });
+  }
+});
 
 module.exports = router;
